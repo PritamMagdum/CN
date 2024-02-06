@@ -1,0 +1,11 @@
+{
+  "name": "cloudy-notes-backend",
+  "version": "1.0.0",
+  "description": "CloudyNotes - is helps users to store local storage notes to cloud storage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pritam Magdum",
+  "license": "ISC"
+}
