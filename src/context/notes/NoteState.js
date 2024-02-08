@@ -20,6 +20,51 @@ const NoteState = (props) => {
             "tag": "Public",
             "date": "2024-02-08T13:49:27.776Z",
             "__v": 0
+        },
+        {
+            "_id": "65c4dbe76b2e12cb39c81f12",
+            "user": "65c3527ef08fb2a8508f5cb6",
+            "title": "normal Book",
+            "description": "This is my normal notes",
+            "tag": "Public",
+            "date": "2024-02-08T13:49:27.776Z",
+            "__v": 0
+        },
+        {
+            "_id": "65c4dbe76b2e12cb39c81f12",
+            "user": "65c3527ef08fb2a8508f5cb6",
+            "title": "normal Book",
+            "description": "This is my normal notes",
+            "tag": "Public",
+            "date": "2024-02-08T13:49:27.776Z",
+            "__v": 0
+        },
+        {
+            "_id": "65c4dbe76b2e12cb39c81f12",
+            "user": "65c3527ef08fb2a8508f5cb6",
+            "title": "normal Book",
+            "description": "This is my normal notes",
+            "tag": "Public",
+            "date": "2024-02-08T13:49:27.776Z",
+            "__v": 0
+        },
+        {
+            "_id": "65c4dbe76b2e12cb39c81f12",
+            "user": "65c3527ef08fb2a8508f5cb6",
+            "title": "normal Book",
+            "description": "This is my normal notes",
+            "tag": "Public",
+            "date": "2024-02-08T13:49:27.776Z",
+            "__v": 0
+        },
+        {
+            "_id": "65c4dbe76b2e12cb39c81f12",
+            "user": "65c3527ef08fb2a8508f5cb6",
+            "title": "normal Book",
+            "description": "This is my normal notes",
+            "tag": "Public",
+            "date": "2024-02-08T13:49:27.776Z",
+            "__v": 0
         }
     ]
 
