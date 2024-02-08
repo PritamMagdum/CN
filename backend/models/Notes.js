@@ -19,7 +19,7 @@ const NotesSchema = new mongoose.Schema({
         default: 'General'
     },
     date: {
-        type: String,
+        type: Date,
         default: Date.now
     }
 
