@@ -32,7 +32,7 @@ function Notes() {
     }
 
     return (
-        <>
+        <div className='container'>
             <AddNote />
             <button type="button" className="btn btn-primary none d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} >
                 Launch demo modal
@@ -49,11 +49,11 @@ function Notes() {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="etitle" name="etitle" aria-describedby="emailHelp" onChange={onChange} value={note.etitle} />
+                                    <input type="text" className="form-control" id="etitle" name="etitle" aria-describedby="emailHelp" onChange={onChange} value={note.etitle} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label" >Description</label>
-                                    <input type="text" className="form-control" id="edescription" name="edescription" onChange={onChange} value={note.edescription} />
+                                    <input type="text" className="form-control" id="edescription" name="edescription" onChange={onChange} value={note.edescription} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label" >Tag</label>
@@ -63,18 +63,22 @@ function Notes() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" ref={refClose}>Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
+                            <button type="button" disabled={note.etitle.length < 5 || note.edescription.length < 5} className="btn btn-primary" onClick={handleClick}>Update Note</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="row my-3">
+            <div className="container row my-3">
                 <h2>Your Notes</h2>
+
+                <div className="container">
+                    {notes.length === 0 && "No Notes To Display! Please Add One To See Notes"}
+                </div>
                 {notes.map((note) => {
                     return <Noteitem key={note._id} note={note} updateNote={updateNote} />
                 })}
             </div>
-        </>
+        </div>
     )
 }
 
