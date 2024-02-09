@@ -37,8 +37,10 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({ title, description, tag })
         });
+        const json = response.json();
+        console.log(json);
 
-        console.log("Adding a new note");
+        // console.log("Adding a new note");
         const note = {
             "_id": "65c4dbe76b2e1dfdfdf2cb39c81f42",
             "user": "65c3527ef08fb2a8508f5cb6",
@@ -66,16 +68,16 @@ const NoteState = (props) => {
         const json = await response.json()
         console.log(json);
 
-        console.log("deleting note with id : " + id);
+        // console.log("deleting note with id : " + id);
         const newNote = notes.filter((note) => { return note._id !== id })
         setNotes(newNote);
     }
 
     // Update Notes function
-    const updateNote = async (id, title, description, tag) => {
+    const updateNotes = async (id, title, description, tag) => {
         // API Call
         const response = await fetch(`${host}/api/notes/updatenotes/${id}`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json',
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YzM1MjdlZjA4ZmIyYTg1MDhmNWNiNiIsImlhdCI6MTcwNzMyMDE5MX0.IyJ_-SvdehJoTTHh8R99PDaPwoeWyuYizbO_LsIQVMk"
@@ -84,19 +86,27 @@ const NoteState = (props) => {
             body: JSON.stringify({ title, description, tag })
         });
 
+        const json = await response.json();
+        console.log(json);
+
+        let newNotes = JSON.parse(JSON.stringify(notes))
+
         // Logic to update notes
-        for (let index = 0; index < notes.length; index++) {
-            const element = notes[index];
+        for (let index = 0; index < newNotes.length; index++) {
+            const element = newNotes[index];
             if (element._id === id) {
                 element.title = title;
                 element.description = description;
                 element.tag = tag;
+                break;
             }
+
         }
+        setNotes(newNotes);
     }
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, updateNote, deleteNote, getNotes }}>
+        <NoteContext.Provider value={{ notes, addNote, updateNotes, deleteNote, getNotes }}>
             {props.children}
         </NoteContext.Provider>
     )
