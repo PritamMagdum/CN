@@ -13,16 +13,16 @@ router.post('/createuser',
     [
         body('name', 'Enter a valid name').isLength({ min: 3 }),
         body('email', 'Enter a valid email').isEmail(),
-        body('password', 'Enter a valid password').isLength({ min: 8 })
+        body('password', 'Enter a valid password').isLength({ min: 3 })
     ], async (req, res) => {
-
+        let success = false
         console.log(req.body);
 
         // if there are errors, return Bad request and the errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
 
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
 
         // check whether the user is already exists or not
@@ -31,7 +31,7 @@ router.post('/createuser',
             // console.log(user);
             if (user) {
 
-                return res.status(400).json({ error: "Sorrry user is already created" });
+                return res.status(400).json({ success, error: "Sorry user is already created" });
 
             }
 
@@ -52,9 +52,10 @@ router.post('/createuser',
             const authToken = jwt.sign(data, JWT_SECRET)
 
             // res.json(user)
-            res.json({ authToken })
+            success = true
+            res.json({ success, authToken })
 
-            res.json(user);
+            // res.json(user);
         } catch (error) {
             console.error(error.message);
             res.status(500).send("some error ouccured internally");
@@ -90,7 +91,9 @@ router.post('/login',
             }
 
             const data = {
-                id: user.id
+                user: {
+                    id: user.id
+                }
             }
 
             const authToken = jwt.sign(data, JWT_SECRET);
