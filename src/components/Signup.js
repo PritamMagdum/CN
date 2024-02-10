@@ -19,7 +19,7 @@ function Signup(props) {
         console.log(json);
         if (json.success) {
             // redirect Home Page
-            localStorage.setItem('token', json.authtoken)
+            localStorage.setItem('token', json.authToken)
             navigate('/');
             props.showAlert("Account Created Successfully!", "success")
         } else {
@@ -33,6 +33,7 @@ function Signup(props) {
     }
     return (
         <div>
+            <h2 className='text-center my-3'>Create an account to use Cloudy Notes</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
